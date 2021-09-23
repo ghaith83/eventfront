@@ -1,0 +1,8 @@
+.bs{
+    border-style: solid;
+border-width: 3px;
+border-color: rgb(190, 68, 68);
+border-style: outset;
+border-radius:4px;
+background-color: rgb(180, 172, 153);
+}

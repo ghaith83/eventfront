@@ -1,0 +1,87 @@
+.contaner{
+ 
+  padding-top: 30px;
+  color: black;
+ background-color: rgb(241, 219, 183);
+
+
+}
+p.img5{
+  text-align: left;
+  color:dimgray;
+ 
+}
+img.img5{
+  padding-left: 60px;
+  float: left;
+  margin: 0 15px 0 100px;
+}
+.feature_img{
+  position: relative;
+  margin:auto;
+  border-radius: 6px;
+  padding-left: 5cm;
+  overflow: hidden;
+}
+.text h2{
+  align-items: center;
+  color: 		rgb(233, 116, 81);
+  padding-top: 30px;
+
+  text-align: center;
+  font-size: 30px;
+}
+.text p{
+  
+  padding-left: 7cm;
+  padding-right: 7cm;
+  padding-bottom: 30px;
+  text-align: center;
+  color: rgb(106, 106, 109);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+  width: 15%;
+}
+.p2{
+  padding-top: 30px;
+ text-align: center;
+ margin-left: auto;
+ margin-right: auto;
+ 
+ padding-left: 7cm;
+ padding-right: 7cm;
+  font-size: 12px;
+  color: gray;
+  font-weight: 500;
+} 
+.play-button{
+  width: 10%;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  right: 50%;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+}
+.vid{
+  padding-top: 50px;
+}
+#droit{
+  float: right;
+  padding-right: 200px;
+  position: relative;
+
+
+}
+#gauche{
+  float: left;
+  padding-left: 200px;
+ position: relative;
+}

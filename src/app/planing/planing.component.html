@@ -1,0 +1,54 @@
+<app-headeruser></app-headeruser>
+<div class="container">
+<form #planingform="ngForm" (ngSubmit)="addplanning()">
+    <label for="appt">Choose time for start your meeting:</label><br>
+ <input type="time" name="datedebut"   min="09:00" max="18:00" required [(ngModel)]=planning.heuredebut><br>
+ <label for="appt">Choose time for end your meeting:</label><br>
+ <input type="time" name="datefin"  min="09:00" max="18:00" required [(ngModel)]=planning.heurefin><br>
+ <label for="">nom tache :</label>
+ <input type="text" name ="nomTache" required [(ngModel)]=planning.nomTache><br>
+ <label for="">detail tache</label>
+ <input type="text" name="detailTache" required [(ngModel)]=planning.detailTache><br>
+ <button >save</button><br>
+ <a *ngIf="msg==='erreur' " style="background: red;width: 100px;" rb=true>{{msg}}</a><br><br>
+  <a *ngIf="msg==='planing add'" style="background: rgb(18, 224, 18);width: 100px" rb=true>{{msg}}</a><br><br>
+</form>
+
+<table class="table user-list" >
+    <thead>
+        <tr><th><span>heuredebut</span></th>
+            <th><span>heurefin</span></th>
+            <th><span>nomTache</span></th>
+            <th ><span>detailTache</span></th>
+ 
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let plan of planing |async">
+            
+            <td>
+                {{plan.heuredebut}}
+            </td>
+            <td >
+                {{plan.heurefin}}
+            </td>
+            <td>
+                {{plan.nomTache}} 
+            </td>
+            <td>
+                {{plan.detailTache}}
+            </td>
+            
+            <td style="width: 20%;">
+            
+                <button (click)="delete(plan)" class="btn-warning " > 
+                    
+                   delete 
+                </button>
+            </td>
+        </tr>
+       
+    </tbody>
+</table>
+</div>

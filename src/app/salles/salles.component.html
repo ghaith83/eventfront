@@ -1,0 +1,31 @@
+<app-headeruser></app-headeruser>
+<div class="ds" style="padding-left: 1cm ;padding-right: 0cm;"*ngFor="let salle of salles" 
+[routerLink]="['sallesId/', salle.idsalle]" >
+  <div class="col-md-6 col-sm-6">
+      <div class="store-item" >
+          <div class="store-item-rating text-warning">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+          </div>
+          <div class="store-item-image">
+              <a href="#">
+                  <img src="{{salle?.image}}" width="500px" alt="" class="img-responsive">
+              </a>
+          </div>
+          <div class="store-item-info clearfix" >
+              <span class="store-item-price themed-color-dark pull-right"> {{salle?.ville}}</span>
+              <a href="detailprod"><strong>{{salle?.nom}}</strong></a><br><br>
+              <i style='font-size:24px' class='fas'>&#xf406;</i> : {{salle?.place}}<br><br>
+              <i style='font-size:24px' class='fas'>&#xf2a1;</i> : {{salle?.surface}} m²<br><br>
+              
+              <small>
+                  
+              <button  class="text-muted" (click)="getSalleId(salle.idsalle)" style="width: 200px; height: 40px; border-style:inset;">Reservé</button></small>
+          </div>
+      </div>
+  </div> 
+</div>
+<app-footer></app-footer>

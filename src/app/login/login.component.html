@@ -1,0 +1,67 @@
+
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div class="d-table-cell align-middle">
+
+                <div class="text-center mt-4">
+                    <h1 class="h2">Welcome back, Dey</h1>
+                    <p class="lead">
+                        Sign in to your account to continue
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="m-sm-4">
+                            <div class="text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Andrew Jones" class="img-fluid rounded-circle" width="132" height="132">
+                            </div>
+                            <form #loginform (ngSubmit)=" loginUser()">
+                               
+                                <small class="text-danger">{{msg}}</small>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control form-control-lg" type="email"  placeholder="Enter your email" [(ngModel)]="user.email" name="email" required #email="ngModel" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                                    [class.is-invalid]="email.invalid && email.touched ">
+                                    
+
+                                    <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched ">l'identifiant de l'e-mail est un champ obligatoire</small>!-->
+                                    <div *ngIf="email.errors && (email.invalid && email.touched )">
+                                        <small class="text-danger" *ngIf="email.errors.required">l'identifiant de l'e-mail est un champ obligatoire</small>
+                                        <small class="text-danger" *ngIf="email.errors.pattern">entez email valide</small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="form-control form-control-lg" type="password"  placeholder="Enter your password" [(ngModel)]="user.password" name="password" required #password="ngModel"
+                                    [class.is-invalid]="password.invalid && password.touched ">
+                                    <small class="text-danger" [class.d-none]="password.valid || password.untouched ">mot de passe est un champ obligatoire</small><br>
+                                    <small>
+    <a href="pages-reset-password.html">Forgot password?</a>
+  </small>
+                                </div>
+                                <div>
+                                    <div class="custom-control custom-checkbox align-items-center">
+                                        <input type="checkbox" class="custom-control-input" value="remember-me" name="remember-me" checked="">
+                                        <label class="custom-control-label text-small">Remember me next time</label>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    
+                                    <button type="submit" class="btn btn-lg btn-info">Sign in</button>
+                                    
+                                </div>
+                                
+                            </form>
+                            <div class="text-danger mt-3">
+                                <small class="float-left" [routerLink]="['/register']">nouvelle client ? click here</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
