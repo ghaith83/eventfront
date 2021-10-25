@@ -1,22 +1,30 @@
 <app-headeruser></app-headeruser>
 <div class="container">
-<form #planingform="ngForm" (ngSubmit)="addplanning()">
+<form #planingform="ngForm" (ngSubmit)="addplanning()" >
     <label for="appt">Choose time for start your meeting:</label><br>
- <input type="time" name="datedebut"   min="09:00" max="18:00" required [(ngModel)]=planning.heuredebut><br>
+ <input type="time" name="datedebut" class="form-control"  min="09:00" max="18:00" required [(ngModel)]=planning.heuredebut><br>
  <label for="appt">Choose time for end your meeting:</label><br>
- <input type="time" name="datefin"  min="09:00" max="18:00" required [(ngModel)]=planning.heurefin><br>
+ <input type="time" name="datefin" class="form-control" min="09:00" max="18:00" required [(ngModel)]=planning.heurefin><br>
  <label for="">nom tache :</label>
- <input type="text" name ="nomTache" required [(ngModel)]=planning.nomTache><br>
+ <input type="text" name ="nomTache" class="form-control" required [(ngModel)]=planning.nomTache><br>
  <label for="">detail tache</label>
- <input type="text" name="detailTache" required [(ngModel)]=planning.detailTache><br>
- <button >save</button><br>
+ <input type="text" name="detailTache" class="form-control" required [(ngModel)]=planning.detailTache><br>
+ <label for="aptnom">l'équipe</label>
+ <select [(ngModel)]=planning.nompart  class="form-control" >
+    <option [ngValue]="null" disabled>attribuer la tâche à votre équipe</option>
+    <option *ngFor="let part of participants"   [ngValue]="part">{{part.nom}}</option>
+    
+</select><br>
+ 
+ <button class="btn btn-lg btn-info ">save</button><br>
  <a *ngIf="msg==='erreur' " style="background: red;width: 100px;" rb=true>{{msg}}</a><br><br>
   <a *ngIf="msg==='planing add'" style="background: rgb(18, 224, 18);width: 100px" rb=true>{{msg}}</a><br><br>
 </form>
 
-<table class="table user-list" >
+<table class="table user-list">
     <thead>
-        <tr><th><span>heuredebut</span></th>
+        <tr><th ><span>equipe</span></th>
+            <th><span>heuredebut</span></th>
             <th><span>heurefin</span></th>
             <th><span>nomTache</span></th>
             <th ><span>detailTache</span></th>
@@ -27,6 +35,9 @@
     <tbody>
         <tr  *ngFor="let plan of planing |async">
             
+            <td>
+                {{plan.nompart}}
+            </td>
             <td>
                 {{plan.heuredebut}}
             </td>
@@ -42,7 +53,7 @@
             
             <td style="width: 20%;">
             
-                <button (click)="delete(plan)" class="btn-warning " > 
+                <button (click)="delete(plan.id)" class="btn-warning " > 
                     
                    delete 
                 </button>

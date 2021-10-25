@@ -12,6 +12,7 @@ import { salle } from './Salles';
 export class SalleService {
   private environement=environment.apiBaseUrl;
  public salle?:salle
+
   constructor(private http :HttpClient) { }
   
   httpHeader = {
@@ -33,6 +34,9 @@ export class SalleService {
 
   public getsal(){
     return this.http.get<salle[]>(`${this.environement}/api/salle/all`);
+  }
+  public getsallebycat(catnom?:string):Observable<salle[]>{
+    return this.http.get<salle[]>(`${this.environement}/api/salle/bycat/`+catnom);
   }
   
 

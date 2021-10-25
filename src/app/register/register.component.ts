@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
         
         console.log("register ok !!!!!")
         this.msg="register succè"
+        this.router.navigateByUrl('login')
       },
       error=>{
         console.log("not yet ??????")

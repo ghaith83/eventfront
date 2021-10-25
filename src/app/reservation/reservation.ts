@@ -4,7 +4,7 @@ import { salle } from "../salles/Salles";
 export class reservation{
     idresrvation? :number;
     datereservation?:Date;
-    idsalle?:number;
+    nomsalle?:string;
     salle?:salle
     constructor(){}
 }

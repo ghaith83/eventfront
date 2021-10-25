@@ -1,0 +1,27 @@
+<app-headeruser></app-headeruser>
+
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <section class="container pt-3 mb-3">
+        <h2 class="h3 block-title text-center">ici vous trouvez les divers types des salles <small> </small></h2>
+        <ng-container *ngFor="let cat of category"
+         >
+        <div class="row pt-5 mt-30">
+            
+            <div class="col-lg-4 col-sm-6 mb-30 pb-5" >
+                
+                <a class="card" href="#">
+                    <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><img src="{{cat.image}}"></div>
+                    <div class="card-body text-center">
+                        <h3 class="card-title pt-1">{{cat.nomcat}}</h3>
+                        <p class="card-text text-sm">{{cat.descrption}}</p><span class="text-sm text-uppercase font-weight-bold"><button class="btn btn-lg btn-info" (click)="getsallebycat(cat.nomcat)">voir ...</button></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        </ng-container>
+        
+    </section>
+    <app-footer></app-footer>
+    

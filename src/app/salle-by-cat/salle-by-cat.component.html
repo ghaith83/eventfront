@@ -2,7 +2,7 @@
 <div class="row pt-5 mt-30">
     <div class="col-lg-4 col-sm-6 mb-30 pb-5">
     <div class="ds" style="padding-left: 1cm ;padding-right: 0cm;" *ngFor="let salle of salles" 
-        [routerLink]="['sallesId/', salle.idsalle]" >
+        >
 
           <div class="store-item-rating text-warning">
               <i class="fa fa-star"></i>
@@ -12,9 +12,9 @@
               <i class="fa fa-star-half-o"></i>
           </div>
           <div class="store-item-image">
-              <a href="#">
+              
                   <img src="{{salle?.image}}" width="500px" alt="" class="img-responsive">
-              </a>
+              
           </div>
           <div class="store-item-info clearfix" >
               <span class="store-item-price themed-color-dark pull-right"> {{salle?.ville}}</span>
@@ -24,7 +24,7 @@
               
               <small>
                   
-              <button  class="text-muted" (click)="getSalleId(salle.idsalle)" style="width: 200px; height: 40px; border-style:inset;">Reservé</button></small>
+              <button  class="text-muted" (click)=" getSalleId(salle.idsalle)" style="width: 200px; height: 40px; border-style:inset;">Reservé</button></small>
           </div>
       </div>
   </div> 

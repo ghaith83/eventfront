@@ -42,8 +42,8 @@ export class FindIdSalleComponent implements OnInit  {
     
     }*/
     this.id=this._Activated_route.snapshot.paramMap.get('idsalle')
- 
     
+  
 
     this.ServiceSalles.getsal().subscribe(
       countries => this.salles ===countries

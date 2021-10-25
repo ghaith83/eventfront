@@ -18,7 +18,7 @@ public addplanning(planning:planning,idsal:number,idreserv:number):Observable<pl
   public getallplaning(id :number,salle:number):Observable<planning[]>{
     return this.http.get<planning[]>(`${this.environement}/api/planing/get/`+id+'/'+salle);
     }
-    public deleteplaning(planigtId: planning){
+    public deleteplaning(planigtId: number){
       return this.http.delete<planning>(`${this.environement}/api/planing/delete`+planigtId);
     }
 }

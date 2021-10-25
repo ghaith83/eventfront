@@ -13,10 +13,13 @@
             </a>
           </li>
           <li class="bs">
-            <a class="nav-link" href="login" *ngIf="loginService.isUserLoggedIn()">A propos</a>
+            <a class="nav-link" href="category">categorie</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="list-produit" *ngIf="loginService.isUserLoggedIn()">réfferencier mon salles</a>
+            <a class="nav-link" href="gere" *ngIf="loginService.isUserLoggedIn()">gérer l'équipe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reservation" *ngIf="loginService.isUserLoggedIn()">reservation</a>
           </li>
           
           

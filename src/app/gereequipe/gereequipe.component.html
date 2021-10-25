@@ -1,0 +1,89 @@
+<app-headeruser></app-headeruser>
+<h2 style="color: cadetblue; margin-left: 20px;" >Ajouter l'equipe </h2>
+<form #planingform="ngForm" (ngSubmit)="addparticipant()" style="float: left;margin-left: 40px;">
+    <label for="appt">nom :</label><br>
+ <input type="text" name="name"  class="form-control"  required [(ngModel)]=participant.nom><br>
+ <label for="appt">prenom :</label><br>
+ <input type="text" name="prenom"  class="form-control" required [(ngModel)]=participant.prenom><br>
+ <label for="">email :</label>
+ <input type="text" name ="email" class="form-control" required [(ngModel)]=participant.email><br>
+ <label for="catname" >Role</label>
+ <select [(ngModel)]=participant.role  class="form-control" name="opt" >
+
+     <option *ngFor="let role of roles"   [ngValue]="role">{{role.name}}</option>
+     
+ </select>
+
+ <button class="btn btn-lg btn-info" [disabled]="planingform.form.invalid">save</button><br>
+ <a *ngIf="msg==='erreur ...' " style="background: red;width: 100px;" rb=true>{{msg}}</a><br><br>
+  <a *ngIf="msg==='ajouter personne bien succes'" style="background: rgb(18, 224, 18);width: 100px" rb=true>{{msg}}</a><br><br>
+</form>
+<div  style="float: left;" *ngIf="roles.length > 0" >
+    <table class="classic" style="table-layout: fixed;  border: solid; position: -ms-page;margin-left: 10px;margin-top: 400px;" >
+        <thead style=" border: solid;">
+            <tr><th><span >nom</span></th>
+                <th><span >prenom</span></th>
+                    <th><span >role</span></th></tr>
+        </thead>
+        <tbody style="table-layout: fixed; border: solid;" >
+            <tr  *ngFor="let param of parts">
+                <td style=" border: solid;">
+                    {{param.nom}}
+                </td>
+                <td style=" border: solid;">
+                    {{param.prenom}}
+                </td>
+                <td style=" border: solid;">
+                    {{param.nomrole}}
+                </td>
+                
+                
+                <td style="width: 20%;">
+                
+                    <button class="btn-warning " (click)="deletepart(param.id)"> 
+                        
+                       delete 
+                    </button>
+                </td>
+            </tr>
+           
+        </tbody>
+    </table>
+    </div>
+
+<div  style="float: right;" *ngIf="roles.length > 0">
+<table class="classic" style="table-layout: fixed;  border: solid; position: relative;margin-right: 15px;margin-top: 100px;" >
+    <thead style=" border: solid;">
+        <tr><th><span >roles</span></th>
+        </tr>
+    </thead>
+    <tbody style="table-layout: fixed; border: solid;" >
+        <tr  *ngFor="let role of roles">
+            
+            <td style=" border: solid;">
+                {{role.name}}
+            </td>
+            
+            
+            <td style="width: 20%;">
+            
+                <button class="btn-warning " (click)="delete(role.id)"> 
+                    
+                   delete 
+                </button>
+            </td>
+        </tr>
+       
+    </tbody>
+</table>
+
+</div>
+<h3 style="color: cadetblue; margin-left: 20px;float: right; " >Ajouter les rols </h3>
+<form #planingform="ngForm" (ngSubmit)="addrole()" style="float: right; margin-right: 50px;margin-top: 100px;">
+    <label for="appt">role :</label><br>
+ <input type="text" name="name"  class="form-control"  required [(ngModel)]=role.name   ><br>
+ 
+ <button class="btn btn-lg btn-info" [disabled]="!role.name">save</button><br>
+ <a *ngIf="msg==='erreur ...' " style="background: red;width: 100px;" rb=true>{{msg}}</a><br><br>
+  <a *ngIf="msg==='ajouter role bien succes'" style="background: rgb(18, 224, 18);width: 100px" rb=true>{{msg}}</a><br><br>
+</form>

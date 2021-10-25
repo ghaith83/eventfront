@@ -1,9 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, partition } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { planning } from '../client/planning';
+import { participant } from '../gereequipe/participant';
+import { ParticipantService } from '../participant.service';
 import { PlanningService } from '../planning.service';
 
 @Component({
@@ -18,9 +20,11 @@ export class PlaningComponent implements OnInit {
  idsalle?:any
  planning=new planning()
  msg=""
+ participants:participant[]=[]
  refraicheplan= new BehaviorSubject<boolean>(true);
   constructor(private _Activated_route: ActivatedRoute,
-    private serviceplaning:PlanningService) { }
+    private serviceplaning:PlanningService,
+    private servicepart:ParticipantService) { }
 
   ngOnInit(): void {
     this._Activated_route.paramMap.subscribe(result =>
@@ -32,7 +36,9 @@ export class PlaningComponent implements OnInit {
     this.idreservation=this._Activated_route.snapshot.paramMap.get('idreservation')
 
     this.planing=this.refraicheplan.pipe(switchMap(_=> this.serviceplaning.getallplaning(this.idreservation,this.idsalle)));
-   this.planing.subscribe((param)=>this.planings=param)  }
+   this.planing.subscribe((param)=>this.planings=param)  
+  this.getallpart()
+  }
 
 
 addplanning(){
@@ -42,18 +48,23 @@ addplanning(){
       
       console.log("addd !!!!!!")
       this.msg="planing add"
+      this.refraicheplan.next(true);
     },
     error=>{
       console.log("not yet")
       this.msg="erreur"
     }
   )
-  this.refraicheplan.next(true);
+ 
 }
 
 
-delete(plan:planning){
+delete(id:any){
 
-  this.serviceplaning.deleteplaning(plan)
+  this.serviceplaning.deleteplaning(id)
+  this.refraicheplan.next(true);
+}
+getallpart(){
+  this.servicepart.getAllPart().subscribe((res:participant[])=>this.participants=res)
 }
 }

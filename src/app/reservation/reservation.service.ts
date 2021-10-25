@@ -21,4 +21,7 @@ export class ReservationService {
   public getsize():Observable<number>{
     return this.http.get<number>(this.environement+'/api/reservation/get/size')
   }
+  public getAllres():Observable<reservation[]>{
+    return this.http.get<reservation[]>(this.environement+'/api/reservation/find/all')
+  }
 }
